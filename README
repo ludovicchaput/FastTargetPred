@@ -3,4 +3,8 @@ FastTargetPred allows to predict protein target(s) for query of one or multiple 
 (the query can have thousands of molecules).
 
 How to install FastTargetPred ?
-
+1. Download the folder
+2. To launch FastTargetPred, you must use Python version 3.7 or superior.
+   The help program includes every instruction to run the program. You can run the following command:
+   Python3.7 FastTargetPred.py -help
+   
