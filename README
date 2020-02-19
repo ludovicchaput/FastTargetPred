@@ -6,5 +6,5 @@ How to install FastTargetPred ?
 1. Download the folder
 2. To launch FastTargetPred, you must use Python version 3.7 or superior.
    The help program includes every instruction to run the program. You can run the following command:
-   Python3.7 FastTargetPred.py -help
+   Python3.7 FastTargetPred.py -help (or simply "python FastTargetPred.py -help", depending on you installation)
    
