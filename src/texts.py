@@ -106,7 +106,7 @@ Keep or not all hits for the same target from multiple database ligands.
     When a hit passes the threshold filtering, a verification is performed on all target hits.
     If a duplicate target is found, the hit with the best query-ligand score is kept. Other hits are discarded.
     Adding this flag allow to disable this behaviour and to see all hits. Be careful to increase the maximum 
-    target number accordingly for this may increase the output size and shadows other hits.
+    target number accordingly for this may increase the output size and hides other hits.
     Example:
             -bppt                       (disable best score filtering)
     
