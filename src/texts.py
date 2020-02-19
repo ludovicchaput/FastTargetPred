@@ -16,13 +16,13 @@ help_db = """\
 Database to screen (default: chembl25).
     We provide 2 databases:
         1. "chembl25" it gathers a subset of active compounds with good confidence score (see details).
-        2. "approved" it gaters 1500 approved drugs.
+        2. "approved" it gathers 1500 approved drugs taken from the ChEMBL25.
         
 """
 help_fp = """\
 Fingerprint(s) to use (default: ECFP4).
 
-    User can select between 1 and 4 fingerprints. 
+    Users can select between 1 and 4 fingerprints. 
     If more than 1 fingerprint are provided, consensus score is calculated.
     Example:
             -fp ECFP4                   (only use ECFP fingerprint)
@@ -41,21 +41,22 @@ Tanimoto Threshold
 
     Default: Tanimoto = 0.8 for FP* and 0.6 for ECFP* fingerprints
     It is the Tanimoto threshold used to filter matching compounds.
-    In case of consensus (2 fingerprints specified or more), 
-    the number of fingerprints must be the same as the number of Tanimoto threshold (and the same order).
+    In case  users select the consensus approach (2 fingerprints specified or more), 
+    the number of fingerprints must be the same as the number of Tanimoto threshold values (and be given in the same order).
     Example:
-            -tc 0.6 0.6 0.8             (Filter out hit with first and second fingerprint's Tanimoto 
-                                        lesser than 0.6 the third fingerprint lesser than 0.8)
+            -tc 0.6 0.6 0.8             (Filter out hit compounds with first and second fingerprint's Tanimoto,
+                                        threshold values strictly less than 0.6 for the first and second fingerprints and
+                                        for the third fingerprint strictly less than 0.8)
 
 """
 help_sd = """\
 Standard deviation threshold
 
     Default: 0.8.
-    Standard deviation threshold is calculated on the z-scores and can be used in combination with Tanimoto threshold.
-    If multiple fingerprints are requested, the sd threshold applies to the consensus score.
+    Standard deviation threshold is calculated on the z-scores and can be used in combination with the Tanimoto threshold.
+    If multiple fingerprints are used, the sd threshold applies to the consensus score.
     Example:
-            -sd 2.5                     (Filter out hit with less than 2.5 zscore)
+            -sd 2.5                     (Filter out hit compounds with less than 2.5 zscore)
     
 """
 help_nbt = """\
@@ -82,7 +83,7 @@ Result output format.
     Default: txt
     Allow to choose a format file for printing results. Currently support .csv and .txt
     Example:
-            -f txt                      (output in the default txt formated file)
+            -f txt                      (output in the default txt formatted file)
 
     List of accepted file format :
             txt
@@ -90,28 +91,28 @@ Result output format.
 
 """
 help_cpu = """\
-Number of cpu to perform calculations.
+Number of CPUs used for the computations.
 
     Default: 4
-    Allow to choose the number of cpu used during tanimoto calculation. (This does not affect prior maya calculation)
+    Allow to choose the number of CPUs used during the Tanimoto calculations. (This does not affect prior maya calculation)
     Example:
-            -cpu 8                      (run tanimoto's calculation on 8 core)
+            -cpu 8                      (run Tanimoto's calculations on 8 cores)
     
 """
 help_bppt = """\
 Keep or not all hits for the same target from multiple database ligands.
 
     Default: Keep best score
-    When a hit pass the threshold filtering, a verification is performed on all target hit.
+    When a hit passes the threshold filtering, a verification is performed on all target hits.
     If a duplicate target is found, the hit with the best query-ligand score is kept. Other hits are discarded.
-    Adding this flag allow to disable this behaviour and to see all hits. Be carefull to increase the maximum 
-    target number accordingly for this may increases the output size and shadows other hits.
+    Adding this flag allow to disable this behaviour and to see all hits. Be careful to increase the maximum 
+    target number accordingly for this may increase the output size and shadows other hits.
     Example:
             -bppt                       (disable best score filtering)
     
 """
 help_noinfo = """\
-Show or not information about target hit.
+Show or not information about target hits.
 
     Default: Show information
     Option to hide information about targets in the output.
