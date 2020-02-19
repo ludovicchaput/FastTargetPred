@@ -11,7 +11,7 @@ abstract = """\
 Predict targets from input molecules.
 """
 
-help_files_input = "Input file(s) of the query. It must be in SDF format. Can be a comma separated list of files."
+help_files_input = "Input file(s) of the query compounds. It must be in SDF format. Can be a comma separated list of files."
 help_db = """\
 Database to screen (default: chembl25).
     We provide 2 databases:
