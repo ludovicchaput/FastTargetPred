@@ -8,3 +8,5 @@ How to install FastTargetPred ?
    The help program includes every instruction to run the program. You can run it with the following command:
    python3.7 FastTargetPred.py -help
    
+
+For more information, a manual is available (see FastTargetPred_manual.pdf).
