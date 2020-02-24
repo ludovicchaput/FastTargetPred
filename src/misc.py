@@ -1,6 +1,7 @@
 # Python 3.7 Built-in packages
 import os
 import re
+import sys
 import time
 import platform
 from pathlib import Path
@@ -53,6 +54,7 @@ def system_verification() -> (bool, list):
     bin_temp_dir = Path(config.DEFAULT_BINARY_FINGERPRINT_FOLDER)
     if not bin_temp_dir.is_dir():
         bin_temp_dir.mkdir()
+
 
     return system_ok, messages
 
