@@ -38,6 +38,12 @@ def generate__tlt_file(input, output):
 
 
 if __name__ == "__main__":
-    generate__tlt_file(sys.argv[1], sys.argv[2])
+    try:
+        assert len(sys.argv) == 3
+        generate__tlt_file(sys.argv[1], sys.argv[2])
+    except AssertionError:
+        print("Usage : tlt_gen.py input output.")
+        sys.exit(1)
+
 
 
