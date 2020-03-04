@@ -44,6 +44,3 @@ if __name__ == "__main__":
     except AssertionError:
         print("Usage : tlt_gen.py input output.")
         sys.exit(1)
-
-
-
