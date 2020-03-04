@@ -27,7 +27,7 @@ CORR_TID_FIELD_NAME = 'tid'
 CORR_CHEMBLID_FIELD_NAME = 'chembl_id'
 SAVED_MAYA_PATH_FILE = BASE_PATH + '/' + "src/maya_path"
 
-DEFAULT_UNIPROT_DATABASE__CHEMBL_FILE_NAME = BASE_PATH + '/' + "db/uniprot_database__ChEMBL.csv"
+DEFAULT_UNIPROT_DATABASE__CHEMBL_FILE_NAME = BASE_PATH + '/' + "db/uniprot_database_ChEMBL.csv"
                                         # Default name of the file that give some informations about TID
 
 UNIPROT_DATABASE__CHEMBL_FILE_DELIMITER = '\t'
