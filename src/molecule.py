@@ -34,6 +34,7 @@ class Molecule(object):
 
         # Start C module. current bottleneck (with maya of course)
         results_dict: typing.Dict[Database_Id, typing.List[Score]] = tc_process(*self.tc_process_args)
+
         # print(f"Molecule : {self.name} - End of C computation - {len(results_dict.keys())} hits found\n", end='')
         shared_db[0].acquire()  # I'm not sure it is usefull to lock dictionary while reading
         db = shared_db[1]
@@ -42,10 +43,9 @@ class Molecule(object):
         shared_db[0].release()
         self.compute_bmpt()
 
+        # Adding None to the queue allow main process to know when this molecule's job's is finished
         shared_progression_queue.put(None)
         output_queue.put((self.hit_results_dict, self.name))
-
-        # Adding None to the queue allow main process to know when this molecule's job's is finished
 
     def compute_bmpt(self):  # Build the best match per target dictionary (based on the higher zscore)
         d = {}

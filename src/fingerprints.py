@@ -150,9 +150,13 @@ class FingerprintList(object):
             file.close()
             return return_d
 
-        correl_dict = get_correlation_dict(config.DEFAULT_TID_CHEMBLID_FILE_NAME)
-        info_dict = get_info_dict(config.DEFAULT_UNIPROT_DATABASE__CHEMBL_FILE_NAME)
-        self._info_dict = {k: info_dict[v] for k, v in correl_dict.items() if v in info_dict}
+        # correl_dict = get_correlation_dict(config.DEFAULT_TID_CHEMBLID_FILE_NAME)
+        # info_dict = get_info_dict(config.DEFAULT_UNIPROT_DATABASE__CHEMBL_FILE_NAME)
+        self._info_dict = get_info_dict(config.DEFAULT_UNIPROT_DATABASE__CHEMBL_FILE_NAME)
+        # print(self._info_dict)
+        # correl_dict = get_correlation_dict(config.DEFAULT_TID_CHEMBLID_FILE_NAME)
+        # info_dict = get_info_dict(config.DEFAULT_UNIPROT_DATABASE__CHEMBL_FILE_NAME)
+        # self._info_dict = {k: info_dict[v] for k, v in correl_dict.items() if v in info_dict}
 
         # l = []  # Some lines I decided to keep to check file reading if changes occur
         # [[l.append(vv) for vv in v] for v in self._info_dict.values()]
