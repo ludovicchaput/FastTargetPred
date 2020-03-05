@@ -125,7 +125,7 @@ class UserArguments(object):
                 are_they = False
                 self.errormsg += f"Fingerprint number and Tanimoto threshold mismatch.\n"
 
-        if not Path(self.dict[DATABASE]+"_all.tlt").is_file():
+        if not Path(self.dict[DATABASE] + config.DEFAULT_TLT_FILE_SUFFIX).is_file():
             are_they = False
             self.errormsg += f"Database {self.dict[DATABASE]} not found.\n"
 

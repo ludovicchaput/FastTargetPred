@@ -118,7 +118,7 @@ class FingerprintList(object):
             self.bfp_files.append((molecule_name, file))
 
     def _read_database(self):
-        text_ = Path(self.user_arguments.db_path + '_all.tlt').read_text()
+        text_ = Path(self.user_arguments.db_path + config.DEFAULT_TLT_FILE_SUFFIX).read_text()
         self._db = {l[0]: l[1:] for l in [line.split(' ') for line in text_.split('\n')]}
 
     def _read_info(self):

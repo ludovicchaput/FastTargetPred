@@ -29,6 +29,7 @@ SAVED_MAYA_PATH_FILE = BASE_PATH + '/' + "src/maya_path"
 
 DEFAULT_UNIPROT_DATABASE__CHEMBL_FILE_NAME = BASE_PATH + '/' + "db/uniprot_database_ChEMBL.csv"
                                         # Default name of the file that give some informations about TID
+DEFAULT_TLT_FILE_SUFFIX = ".tlt"
 
 UNIPROT_DATABASE__CHEMBL_FILE_DELIMITER = '\t'
                                         # Delimiter of the csv file
