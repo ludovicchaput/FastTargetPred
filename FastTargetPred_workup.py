@@ -41,9 +41,9 @@ def render_query_mol(s: str, img_provider=None, **kwargs):
     else:
         return img_provider.get_img(s) + "<div>{}</div>".format(s)
 def render_chembl_structure(s: str, arguments=None, **kwargs):
-    url = "https://www.ebi.ac.uk/chembl/api/data/image/{}.png".format(s)
+    url = "https://www.ebi.ac.uk/chembl/api/data/image/{}.svg".format(s)
     img_markup = ""
-    if arguments is not None and arguments[ARGUMENTS.SAVE_CHEMBL_STRUCT]:
+    if arguments is not None and arguments.get(ARGUMENTS.SAVE_CHEMBL_STRUCT, False):
         try :
             with request.urlopen(url, timeout=60) as response:
                 response_bytes = response.read()
@@ -867,7 +867,7 @@ class WriteManager1(WriteManager):
         self.f.write(row_htm.format(s_temp2))
         self.f.write("</thead><tbody>")
 
-        if self.arguments[ARGUMENTS.SAVE_CHEMBL_STRUCT]:
+        if self.arguments.get(ARGUMENTS.SAVE_CHEMBL_STRUCT, False):
             print("Querying Chembl server to retrieve structures. This step might be long ...")
         else:
             print("Writing results table ...")
@@ -988,12 +988,12 @@ if __name__ == "__main__":
     optional_arguments.add_argument(f"-{ARGUMENTS.SDF_INPUT}", help="Path to the SD file used as input of FastTargetPred. Used for image generation.\nWarning : RDKit is required for this to work.")
     optional_arguments.add_argument(f"-{ARGUMENTS.SCORE_FILTER}", help="Score Filtering value.\nUsefull if you want a smaller or cleaner file.", type=float)
     optional_arguments.add_argument(f"-{ARGUMENTS.PLOT_STATS}", help="Will analyse data and plot a few metrics at the top of the html report.", action='store_true')
-    optional_arguments.add_argument(f"-{ARGUMENTS.SAVE_CHEMBL_STRUCT}", help="Save Chembl molecule structure into the output file.\nWill take longer to create and will create a bigger file, but allow offline consultation.", action='store_true')
+    # optional_arguments.add_argument(f"-{ARGUMENTS.SAVE_CHEMBL_STRUCT}", help="Save Chembl molecule structure into the output file.\nWill take longer to create and will create a bigger file, but allow offline consultation.", action='store_true')
     optional_arguments.add_argument(f"-{ARGUMENTS.CLASS_NUMBER}", help="Class Number.\nWill change the frequency distribution graph class width in order to have the desired number of class.", type=int, default=20)
     optional_arguments.add_argument(f"-{ARGUMENTS.SPLIT_QUERY_COMPOUNDS}", help="Split Query Compounds.\nWill generate one file per query compound and put them all in a folder named after your seleted output.", action='store_true')
 
     namespace = parser.parse_args()
-    argument_dict = {arg:namespace.__getattribute__(arg)  for arg in ARGUMENTS.ARG_LIST}
+    argument_dict = {arg:namespace.__getattribute__(arg)  for arg in ARGUMENTS.ARG_LIST if hasattr(namespace, arg)}
 
     if argument_dict[ARGUMENTS.SDF_INPUT]:
         try:
