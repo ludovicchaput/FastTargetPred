@@ -89,7 +89,7 @@ class Fingerprint(object):
             output_dir.mkdir()
 
         fp_files_name = Path( f"{base_sdf.stem}_{self.name}.fpf")
-        shell_cmd = "{perl_path} {maya_path} {fp_cmd} --output FP --CompoundIDMode MolName -r {fp_file_name} -o {input_file}".format(
+        shell_cmd = '''{perl_path} {maya_path} {fp_cmd} --output FP --CompoundIDMode MolName -r {fp_file_name} -o "{input_file}"'''.format(
             perl_path=self.perl_path
             , maya_path=Path(self.maya_path, config.FINGERPRINT_CMD[self.name][0])
             , fp_cmd=config.FINGERPRINT_CMD[self.name][1]
